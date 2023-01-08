@@ -1072,8 +1072,26 @@ typescript_eslint_rules = {
     # Require property style for method signatures. Default options.
     "method-signature-style": "warn",
 
-    # Enforce camelCase/PascalCase/UPPER_CASE naming. Default options.
-    "naming-convention": "warn",
+    # Enforce snake_case/StrictPascalCase/UPPER_CASE naming.
+    "naming-convention": [
+        "warn",
+        {
+            "selector": "default",
+            "format": ["snake_case"],
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "allow",
+        },
+        {
+            "selector": "variable",
+            "format": ["snake_case", "UPPER_CASE"],
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "allow",
+        },
+        {
+            "selector": "typeLike",
+            "format": ["StrictPascalCase"],
+        },
+    ],
 
     # Disallow generic Array constructors. No options. Extends eslint/no-array-constructor.
     "no-array-constructor": "error",
